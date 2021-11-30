@@ -23,7 +23,9 @@ namespace BotDiscord
                     return "Permission invalide";
                 case "Unknown command.":
                     return "Commande inconnue.";
-                
+                case "The input text has too few parameters.":
+                    return "La commande a pas assez de paramètres.";
+
             }
 
             return reason;

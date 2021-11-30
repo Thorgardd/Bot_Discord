@@ -25,27 +25,32 @@ namespace BotDiscord
         public static async Task RunAsync(string[] args)
         {
             var startup = new Startup(args);
-            await startup.RunAsync();
+            startup.RunAsync().GetAwaiter().GetResult();
         }
 
         public async Task RunAsync()
         {
             var services = new ServiceCollection();
             // TODO - ATTENTION AU AWAIT
-            await ConfigureServices(services);
+            ConfigureServices(services).GetAwaiter().GetResult();
             var provider = services.BuildServiceProvider();
             provider.GetRequiredService<CommandHandler>();
 
             await provider.GetRequiredService<StartupService>().StartAsync();
             await Task.Delay(-1);
         }
-
+        
         public async Task ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
                     LogLevel = LogSeverity.Debug,
                     MessageCacheSize = 1000,
+                    GatewayIntents = GatewayIntents.Guilds |
+                                     GatewayIntents.GuildMembers |
+                                     GatewayIntents.GuildMessageReactions | 
+                                     GatewayIntents.GuildMessages | 
+                                     GatewayIntents.GuildVoiceStates
                 }))
                 .AddSingleton(new CommandService(new CommandServiceConfig
                 {

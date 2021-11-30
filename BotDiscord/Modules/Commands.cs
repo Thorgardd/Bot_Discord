@@ -8,6 +8,7 @@ namespace BotDiscord.Modules
 {
     public class Commands : ModuleBase
     {
+        
         [Command("server")]
         public async Task ServerInfos()
         {
@@ -24,28 +25,52 @@ namespace BotDiscord.Modules
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"[ L'Utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!server' ]");
+            Console.WriteLine($"\t## [ L'Utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!server' ]");
             Console.ForegroundColor = default;
         }
 
+        
         [Command("clear")]
         [RequireUserPermission(GuildPermission.ManageMessages)]
         public async Task Clear(int amount)
         {
             if (!(Context.User as SocketGuildUser).GuildPermissions.ManageMessages)
             {
+                var builder = new EmbedBuilder()
+                    .WithColor(new Color(22, 133, 0))
+                    .AddField(new Emoji("\u26A0") + "Erreur", "Demande trop grande")
+                    .WithCurrentTimestamp();
+                var embed = builder.Build();
+                await Context.Channel.SendMessageAsync(null, false, embed);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\t[ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear'\n sans en avoir la permission ]");
+                Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' sans en avoir la permission ]");
                 Console.ForegroundColor = default;
+                // TODO - NE FONCTIONNE PAS
             }
             else if ((Context.User as SocketGuildUser).GuildPermissions.ManageMessages && amount < 200)
             {
                 var messages = await Context.Channel.GetMessagesAsync(amount + 1).FlattenAsync();
                 await (Context.Channel as SocketTextChannel).DeleteMessagesAsync(messages);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\t[ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' ]");
+                Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' ]");
                 Console.ForegroundColor = default;
             }
+        }
+
+        [Command("help")]
+        public async Task Help()
+        {
+            var builder = new EmbedBuilder()
+                .WithColor(22, 133, 0)
+                .WithTitle("Aide aux commandes")
+                .WithDescription(new Emoji("\u2139") + " Liste des commandes disponibles " + new Emoji("\u2139"))
+                .AddField("!server", "Montre les informations du serveur")
+                .AddField("!clear (Admin Only)", "Nettoie un channel d'un nombre de messages donnés")
+                .AddField("!help", " Montre les commandes disponibles")
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
+            Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utlisé la commande '!help' ]");
         }
     }
 }

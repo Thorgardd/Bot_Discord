@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Discord.Rest;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 
@@ -23,7 +25,8 @@ namespace BotDiscord.Services
 
             _Discord.Ready += OnReady;
             _Discord.MessageReceived += OnMessageReceived;
-            // _Discord.UserJoined += OnJoined;
+            _Discord.UserJoined += OnJoined;
+            _Discord.UserLeft += OnLeft;
         }
 
         /// <summary>
@@ -67,10 +70,43 @@ namespace BotDiscord.Services
         /// <summary>
         /// Method used when a user join the Discord Server
         /// </summary>
-        public async Task OnJoined()
+        public async Task OnJoined(SocketGuildUser user)
         {
+            // Change the ID by your welcome channel ID
+            // 
+            var channel = _Discord.GetChannel(893811574593179682) as SocketTextChannel;
             var builder = new EmbedBuilder()
-                .WithColor(new Color(22, 133, 0));
+                .WithColor(new Color(22, 133, 0))
+                .WithThumbnailUrl(_Discord.CurrentUser.GetAvatarUrl())
+                .WithDescription($"Connexion d'un utilisateur à la Matrice")
+                .AddField("Utilisateur", $"{user.Username}")
+                .AddField("Transmission d'un message : ", "Bienvenue dans la Matrice")
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
+            await channel.SendMessageAsync(null, false, embed);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\t## [ L'Utilisateur {user.Username}#{user.Discriminator} a rejoint le serveur ]");
+        }
+
+        /// <summary>
+        /// Method used when a user leave the Discord Server
+        /// </summary>
+        public async Task OnLeft(SocketGuildUser user)
+        {
+            // Change the ID by your welcome channel ID
+            // 
+            var channel = _Discord.GetChannel(893811574593179682) as SocketTextChannel;
+            var builder = new EmbedBuilder()
+                .WithColor(22, 133, 0)
+                .WithThumbnailUrl(_Discord.CurrentUser.GetAvatarUrl())
+                .WithDescription("Déconnexion d'un utilisateur de la Matrice")
+                .AddField("Utilisateur : ", $"{user.Username}")
+                .AddField("Recyclage du sujet :", "Validée")
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
+            await channel.SendMessageAsync(null, false, embed);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\t## [ L'utilisateur {user.Username}#{user.Discriminator} a quitté le serveur ]");
         }
     }
 }
