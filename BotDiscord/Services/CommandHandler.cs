@@ -84,6 +84,7 @@ namespace BotDiscord.Services
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await channel.SendMessageAsync(null, false, embed);
+            
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\t## [ L'Utilisateur {user.Username}#{user.Discriminator} a rejoint le serveur ]");
         }
@@ -105,6 +106,7 @@ namespace BotDiscord.Services
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await channel.SendMessageAsync(null, false, embed);
+            
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\t## [ L'utilisateur {user.Username}#{user.Discriminator} a quitté le serveur ]");
         }

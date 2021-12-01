@@ -24,6 +24,7 @@ namespace BotDiscord.Modules
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+            
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\t## [ L'Utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!server' ]");
             Console.ForegroundColor = default;
@@ -42,6 +43,7 @@ namespace BotDiscord.Modules
                     .WithCurrentTimestamp();
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
+                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' sans en avoir la permission ]");
                 Console.ForegroundColor = default;
@@ -51,6 +53,7 @@ namespace BotDiscord.Modules
             {
                 var messages = await Context.Channel.GetMessagesAsync(amount + 1).FlattenAsync();
                 await (Context.Channel as SocketTextChannel).DeleteMessagesAsync(messages);
+                
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' ]");
                 Console.ForegroundColor = default;
@@ -70,6 +73,7 @@ namespace BotDiscord.Modules
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+            
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\t## [ L'utlisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!infos' sur {user.Username}#{user.Discriminator}");
             Console.ForegroundColor = default;
@@ -89,6 +93,7 @@ namespace BotDiscord.Modules
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
+            
             Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utlisé la commande '!help' ]");
         }
     }
