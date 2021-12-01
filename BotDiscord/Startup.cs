@@ -25,7 +25,7 @@ namespace BotDiscord
         public static async Task RunAsync(string[] args)
         {
             var startup = new Startup(args);
-            startup.RunAsync().GetAwaiter().GetResult();
+            await startup.RunAsync();
         }
 
         public async Task RunAsync()

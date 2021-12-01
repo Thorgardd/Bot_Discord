@@ -25,17 +25,16 @@ namespace BotDiscord.Services
 
         public async Task StartAsync()
         {
-            string? Token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.User);
+            string token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.User);
 
-            await _Discord.LoginAsync(TokenType.Bot, Token);
+            await _Discord.LoginAsync(TokenType.Bot, token);
             await _Discord.StartAsync();
             
             await _Commands.AddModulesAsync(Assembly.GetEntryAssembly(), _Provider);
 
-            if (string.IsNullOrEmpty(Token))
+            if (string.IsNullOrEmpty(token))
             {
                 Console.WriteLine("Veuillez inserer votre Token dans le fichier _config.yml");
-                return;
             }
         }
     }
