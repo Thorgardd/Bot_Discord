@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace BotDiscord
 {
@@ -11,7 +10,7 @@ namespace BotDiscord
         }
 
         /// <summary>
-        /// This method translate every error
+        /// This method will translate every error which will be showed in the Channel
         /// </summary>
         /// <param name="reason"></param>
         /// <returns></returns>
@@ -25,6 +24,8 @@ namespace BotDiscord
                     return "Commande inconnue.";
                 case "The input text has too few parameters.":
                     return "La commande a pas assez de paramètres.";
+                case "User not found.":
+                    return "Utilisateur non trouvé";
 
             }
 
