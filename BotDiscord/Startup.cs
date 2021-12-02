@@ -45,6 +45,7 @@ namespace BotDiscord
             services.AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
                     LogLevel = LogSeverity.Debug,
+                    AlwaysDownloadUsers = true,
                     MessageCacheSize = 1000,
                     GatewayIntents = GatewayIntents.Guilds |
                                      GatewayIntents.GuildMembers |
