@@ -10,11 +10,15 @@ namespace BotDiscord.Services
 {
     public class StartupService
     {
+        // Attributs
+        //
         public static IServiceProvider _Provider;
         private readonly DiscordSocketClient _Discord;
         private readonly CommandService _Commands;
         private readonly IConfigurationRoot _Config;
-
+        
+        // Constructor
+        //
         public StartupService(IServiceProvider provider, DiscordSocketClient discord, CommandService commands, IConfigurationRoot config)
         {
             _Provider = provider;
@@ -23,6 +27,8 @@ namespace BotDiscord.Services
             _Config = config;
         }
 
+        // Starting Function
+        //
         public async Task StartAsync()
         {
             string token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.User);
