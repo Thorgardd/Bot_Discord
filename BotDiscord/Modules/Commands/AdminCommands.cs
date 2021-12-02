@@ -44,13 +44,6 @@ namespace BotDiscord.Modules.Commands
 
             await Context.Channel.SendMessageAsync("🛑 Ban de la Matrice 🛑");
             await Context.Guild.AddBanAsync(user.Id, 1, reason);
-
-            var builder = new EmbedBuilder()
-                .WithColor(new Color(22, 133, 0))
-                .WithDescription($"L'utilisateur #{user.Discriminator} a été banni.")
-                .WithCurrentTimestamp();
-            var embed = builder.Build();
-            await Context.Channel.SendMessageAsync(null, false, embed);
         }
     }
 }
