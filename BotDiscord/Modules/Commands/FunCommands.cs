@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Discord;
@@ -31,6 +32,5 @@ namespace BotDiscord.Modules.Commands
             Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utliisé la commande '!meme'");
             Console.ForegroundColor = default;
         }
-
     }
 }

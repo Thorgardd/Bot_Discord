@@ -33,6 +33,3 @@ C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDis
 C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\obj\Debug\netcoreapp3.1\BotDiscord.dll
 C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\obj\Debug\netcoreapp3.1\BotDiscord.pdb
 C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\obj\Debug\netcoreapp3.1\BotDiscord.genruntimeconfig.cache
-C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\bin\Debug\netcoreapp3.1\Binance.Net.dll
-C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\bin\Debug\netcoreapp3.1\CryptoExchange.Net.dll
-C:\Users\jerem\Desktop\perso\C# (perso)\bot_discord\DiscordBot\DiscordBot\BotDiscord\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll

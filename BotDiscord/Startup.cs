@@ -51,7 +51,7 @@ namespace BotDiscord
                                      GatewayIntents.GuildMembers |
                                      GatewayIntents.GuildMessageReactions | 
                                      GatewayIntents.GuildMessages | 
-                                     GatewayIntents.GuildVoiceStates 
+                                     GatewayIntents.GuildVoiceStates
                 }))
                 .AddSingleton(new CommandService(new CommandServiceConfig
                 {

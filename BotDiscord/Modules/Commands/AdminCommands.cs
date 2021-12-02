@@ -20,11 +20,6 @@ namespace BotDiscord.Modules.Commands
                     .WithCurrentTimestamp();
                 var embed = builder.Build();
                 await Context.Channel.SendMessageAsync(null, false, embed);
-                
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' sans en avoir la permission ]");
-                Console.ForegroundColor = default;
-                // TODO - NE FONCTIONNE PAS
             }
             else if ((Context.User as SocketGuildUser).GuildPermissions.ManageMessages && amount < 200)
             {
@@ -35,6 +30,27 @@ namespace BotDiscord.Modules.Commands
                 Console.WriteLine($"\t## [ L'utilisateur {Context.User.Username}#{Context.User.Discriminator} a utilisé la commande '!clear' ]");
                 Console.ForegroundColor = default;
             }
+        }
+
+        [Command("ban")]
+        [RequireUserPermission(GuildPermission.BanMembers)]
+        public async Task Ban(SocketGuildUser user, [Remainder] string reason)
+        {
+            if (user == null || reason == null)
+            {
+                await ReplyAsync("Merci de saisir un utilisateur valide ainsi qu'une raison");
+                return;
+            }
+
+            await Context.Channel.SendMessageAsync("🛑 Ban de la Matrice 🛑");
+            await Context.Guild.AddBanAsync(user.Id, 1, reason);
+
+            var builder = new EmbedBuilder()
+                .WithColor(new Color(22, 133, 0))
+                .WithDescription($"L'utilisateur #{user.Discriminator} a été banni.")
+                .WithCurrentTimestamp();
+            var embed = builder.Build();
+            await Context.Channel.SendMessageAsync(null, false, embed);
         }
     }
 }

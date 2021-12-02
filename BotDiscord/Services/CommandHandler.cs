@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using BotDiscord.Modules.Commands;
 using Discord;
 using Discord.Commands;
 using Discord.Rest;
@@ -15,6 +16,7 @@ namespace BotDiscord.Services
         private readonly DiscordSocketClient _Discord;
         private readonly CommandService _Commands;
         private readonly IConfigurationRoot _Config;
+        private bool isBanned;
 
         public CommandHandler(DiscordSocketClient discord, IServiceProvider provider, IConfigurationRoot config, CommandService commands)
         {
@@ -27,7 +29,9 @@ namespace BotDiscord.Services
             _Discord.MessageReceived += OnMessageReceived;
             _Discord.UserJoined += OnJoined;
             _Discord.UserLeft += OnLeft;
+            _Discord.UserBanned += OnBanned;
         }
+
 
         /// <summary>
         /// Method used when Discord Bot is ready to be used on your Discord Server
@@ -43,6 +47,7 @@ namespace BotDiscord.Services
             Console.WriteLine($"\t[ Bienvenue dans la Matrice ]" + Environment.NewLine);
         }
 
+        
         /// <summary>
         /// Method used when the bot deals with a message
         /// </summary>
@@ -67,6 +72,7 @@ namespace BotDiscord.Services
             }
         }
         
+        
         /// <summary>
         /// Method used when a user join the Discord Server
         /// </summary>
@@ -77,10 +83,11 @@ namespace BotDiscord.Services
             var channel = _Discord.GetChannel(893811574593179682) as SocketTextChannel;
             var builder = new EmbedBuilder()
                 .WithColor(new Color(22, 133, 0))
-                .WithThumbnailUrl(_Discord.CurrentUser.GetAvatarUrl())
+                .WithThumbnailUrl(user.GetAvatarUrl())
                 .WithDescription($"Connexion d'un utilisateur à la Matrice")
                 .AddField("Utilisateur", $"{user.Username}")
                 .AddField("Transmission d'un message : ", "Bienvenue dans la Matrice")
+                .AddField("Aide", "Pour trouver de l'aide, tapez !help")
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await channel.SendMessageAsync(null, false, embed);
@@ -89,6 +96,7 @@ namespace BotDiscord.Services
             Console.WriteLine($"\t## [ L'Utilisateur {user.Username}#{user.Discriminator} a rejoint le serveur ]");
         }
 
+        
         /// <summary>
         /// Method used when a user leave the Discord Server
         /// </summary>
@@ -97,9 +105,10 @@ namespace BotDiscord.Services
             // Change the ID by your welcome channel ID
             // 
             var channel = _Discord.GetChannel(893811574593179682) as SocketTextChannel;
+            
             var builder = new EmbedBuilder()
                 .WithColor(22, 133, 0)
-                .WithThumbnailUrl(_Discord.CurrentUser.GetAvatarUrl())
+                .WithThumbnailUrl(user.GetAvatarUrl())
                 .WithDescription("Déconnexion d'un utilisateur de la Matrice")
                 .AddField("Utilisateur : ", $"{user.Username}")
                 .AddField("Recyclage du sujet :", "Validée")
@@ -109,6 +118,16 @@ namespace BotDiscord.Services
             
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\t## [ L'utilisateur {user.Username}#{user.Discriminator} a quitté le serveur ]");
+            
+        }
+
+        
+        /// <summary>
+        /// Method used when a user get banned from the Discord Server
+        /// </summary>
+        public async Task OnBanned(SocketUser user, SocketGuild socketGuild)
+        {
+            isBanned = true;
         }
     }
 }
