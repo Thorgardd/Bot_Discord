@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// Usings
+//
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+
 using Discord;
 using Discord.Commands;
-using Discord.WebSocket;
+
 using Newtonsoft.Json.Linq;
 
 namespace BotDiscord.Modules.Commands
@@ -14,8 +16,8 @@ namespace BotDiscord.Modules.Commands
         [Command("meme")]
         public async Task Meme()
         {
-            var Client = new HttpClient();
-            var result = await Client.GetStringAsync("https://reddit.com/r/memes/random.json?limit=1");
+            var client = new HttpClient();
+            var result = await client.GetStringAsync("https://reddit.com/r/memes/random.json?limit=1");
             JArray array = JArray.Parse(result);
             JObject post = JObject.Parse(array[0]["data"]["children"][0]["data"].ToString());
 
@@ -23,7 +25,7 @@ namespace BotDiscord.Modules.Commands
                 .WithImageUrl(post["url"].ToString())
                 .WithColor(new Color(22, 133, 0))
                 .WithTitle(post["title"].ToString())
-                .WithUrl("https://reddit.com" + post["permalink"].ToString())
+                .WithUrl("https://reddit.com" + post["permalink"])
                 .WithFooter($"🗨️ {post["num_comments"]} 👍 {post["ups"]}");
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);

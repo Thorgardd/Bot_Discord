@@ -18,9 +18,9 @@ namespace BotDiscord.Modules.Commands
                 .WithColor(new Color(22, 133, 0))
                 .WithDescription($"Informations autorisées")
                 .AddField("Date de Création de la Matrice : ", $"{(Context.Guild.CreatedAt.ToString("dd/MM/yyyy"))}", false)
-                .AddField("Membres : ", $"{(Context.Guild as SocketGuild).MemberCount}", false)
-                .AddField("Propriétaire : ", $"@{(Context.Guild as SocketGuild).Owner}", false)
-                .AddField("Latence : ", $"{(Context.Client as DiscordSocketClient).Latency}", false)
+                .AddField("Membres : ", $"{(Context.Guild as SocketGuild).MemberCount}")
+                .AddField("Propriétaire : ", $"@{(Context.Guild as SocketGuild).Owner}")
+                .AddField("Latence : ", $"{(Context.Client as DiscordSocketClient).Latency}")
                 .WithCurrentTimestamp();
             var embed = builder.Build();
             await Context.Channel.SendMessageAsync(null, false, embed);
@@ -33,7 +33,7 @@ namespace BotDiscord.Modules.Commands
         
         
         [Command("infos")]
-        public async Task Infos(SocketGuildUser user = null)
+        public async Task Infos(SocketGuildUser? user = null)
         {
             var builder = new EmbedBuilder()
                 .WithColor(new Color(22, 133, 0))

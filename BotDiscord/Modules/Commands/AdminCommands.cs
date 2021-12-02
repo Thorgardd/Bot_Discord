@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -36,7 +37,7 @@ namespace BotDiscord.Modules.Commands
         [RequireUserPermission(GuildPermission.BanMembers)]
         public async Task Ban(SocketGuildUser user, [Remainder] string reason)
         {
-            if (user == null || reason == null)
+            if (user != null)
             {
                 await ReplyAsync("Merci de saisir un utilisateur valide ainsi qu'une raison");
                 return;

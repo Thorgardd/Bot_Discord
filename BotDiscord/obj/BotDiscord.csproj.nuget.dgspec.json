@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj": {}
+    "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj": {
+    "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
+        "projectUniqueName": "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
         "projectName": "BotDiscord",
-        "projectPath": "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
+        "projectPath": "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
         "packagesPath": "C:\\Users\\jerem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\obj\\",
+        "outputPath": "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jerem\\AppData\\Roaming\\NuGet\\NuGet.Config",

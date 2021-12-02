@@ -1,9 +1,11 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿// Usings
+//
+using System;
 using System.Threading.Tasks;
+
 using Discord;
 using Discord.Commands;
-using Discord.WebSocket;
+
 
 namespace BotDiscord.Modules.Commands
 {
@@ -23,7 +25,7 @@ namespace BotDiscord.Modules.Commands
                 .AddField("!meme", "Chargement d'un meme sur le Discord")
                 .WithCurrentTimestamp();
             var embed = builder.Build();
-            await Context.Channel.SendMessageAsync("⚙️AIDE AU COMMANDES ⚙️", false, null);
+            await Context.Channel.SendMessageAsync("⚙️AIDE AU COMMANDES ⚙️");
             await Context.Channel.SendMessageAsync(null, false, embed);
 
             Console.ForegroundColor = ConsoleColor.Blue;

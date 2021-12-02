@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TiC5OARJkgtvGskZIe2hnHyKm5lqikvEypYP/ZRIbtTZ2RSilEMg6dikNc4HPqAmIpwnJLvIEZe8pd8iEtRYUw==",
+  "dgSpecHash": "h/3V4FilzmGR6wVdHFvJpBIxqicMtyQFUDHuwbRm2SsIXpL5/XfpxIcnZ9SerGsHQkNOczfczvj+jUmrkkYQjA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jerem\\Desktop\\perso\\C# (perso)\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
+  "projectFilePath": "C:\\Users\\jerem\\Desktop\\C#\\Perso\\bot_discord\\DiscordBot\\DiscordBot\\BotDiscord\\BotDiscord.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jerem\\.nuget\\packages\\discord.net\\2.4.0\\discord.net.2.4.0.nupkg.sha512",
     "C:\\Users\\jerem\\.nuget\\packages\\discord.net.commands\\2.4.0\\discord.net.commands.2.4.0.nupkg.sha512",

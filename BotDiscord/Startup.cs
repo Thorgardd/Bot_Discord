@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -9,6 +10,7 @@ using BotDiscord.Services;
 
 namespace BotDiscord
 {
+    [SuppressMessage("ReSharper", "UnusedParameter.Local")]
     public class Startup
     {
         public IConfigurationRoot Configuration { get; }
