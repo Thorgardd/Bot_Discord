@@ -1,10 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using BotDiscord.Modules.Translate;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 
 namespace BotDiscord.Services
 {
@@ -31,7 +35,7 @@ namespace BotDiscord.Services
         //
         public async Task StartAsync()
         {
-            string token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.User);
+            string? token = Environment.GetEnvironmentVariable("DiscordToken", EnvironmentVariableTarget.User);
 
             await _Discord.LoginAsync(TokenType.Bot, token);
             await _Discord.StartAsync();

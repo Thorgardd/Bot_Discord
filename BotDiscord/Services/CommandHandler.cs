@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using BotDiscord.Modules.Commands;
+using BotDiscord.Modules.Translate;
 using Discord;
 using Discord.Commands;
 using Discord.Rest;
@@ -65,7 +66,7 @@ namespace BotDiscord.Services
                     var reason = result.ErrorReason;
                     var builder = new EmbedBuilder()
                         .WithColor(new Color(22, 133, 0))
-                        .AddField($"{new Emoji("\u26A0")} ERREUR", $"{Program.Translate(reason)}");
+                        .WithDescription(Translate.TranslateError(reason));
                     var embed = builder.Build();
                     await context.Channel.SendMessageAsync(null, false, embed);
                 }

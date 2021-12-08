@@ -1,5 +1,4 @@
 ﻿// Usings
-//
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,6 +7,7 @@ using Discord;
 using Discord.Commands;
 
 using Newtonsoft.Json.Linq;
+//
 
 namespace BotDiscord.Modules.Commands
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using BotDiscord.Modules.Translate;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -13,7 +14,15 @@ namespace BotDiscord
     [SuppressMessage("ReSharper", "UnusedParameter.Local")]
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; }
+        public IConfigurationRoot? Configuration { get; }
+
+        public Startup()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddYamlFile("_translation.yml");
+            Configuration = builder.Build();
+        }
 
         public Startup(string[] args)
         {
